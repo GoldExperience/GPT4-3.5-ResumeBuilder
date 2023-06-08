@@ -1,6 +1,6 @@
 import gradio as gr
-
-
+import openai
+from prompt import generate_optimize_prompt
 # 输入的数据
 def optimize_resume(openAI_key, job_description, optimize_job_desc, basic_info, optimize_basic_info, 
                     work_experience, optimize_work_exp, education, optimize_education, 

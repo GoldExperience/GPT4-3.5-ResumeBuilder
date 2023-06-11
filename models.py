@@ -39,6 +39,9 @@ def resume_format(openai_key,resume_content,model="gpt-4"):
     response_content = get_model_response(system_design_for_format,user_message,model)
     return response_content
 
+def test_func(x):
+    return "result1","result2"
+
 
 if __name__=="__main__":
     # resume_part_optimizer(1,2,3,4,5)
@@ -46,5 +49,7 @@ if __name__=="__main__":
     response = get_model_response(system_design_for_optimize,"nothing, just fot test","gpt-4")
     print(response)
     pass
+
+
 
 

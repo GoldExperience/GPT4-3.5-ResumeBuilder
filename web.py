@@ -1,23 +1,19 @@
 import gradio as gr
-from functions import optimized_resume
+import markdown2
 
+def markdown_editor(text):
+    html = markdown2.markdown(text)
+    return html
 
 iface = gr.Interface(
-    fn=optimized_resume,
-    inputs=[
-        gr.inputs.Textbox(lines=1, placeholder="OpenAI key here..."),
-        gr.inputs.Textbox(lines=3, placeholder="Job Description here..."),
-        gr.inputs.Textbox(lines=3, placeholder="Basic Info here..."),
-        gr.inputs.Textbox(lines=3, placeholder="Work Experience here..."),
-        gr.inputs.Checkbox(label="Don't Optimize Work Experience"),
-        gr.inputs.Textbox(lines=3, placeholder="Education here..."),
-        gr.inputs.Checkbox(label="Don't Optimize Education"),
-        gr.inputs.Textbox(lines=3, placeholder="Skills here..."),
-        gr.inputs.Checkbox(label="Don't Optimize Skills"),
-        gr.inputs.Textbox(lines=2, placeholder="other Requirements"),
-    ],
-    outputs="text",
-    
+    fn=markdown_editor,
+    inputs="text",
+    outputs="html",
+    title="Gradio Markdown Editor",
+    description="Enter your Markdown text below:",
+    theme="default",
+    layout="vertical",
+    allow_flagging=False
 )
 
 iface.launch()

@@ -48,3 +48,12 @@ def optimized_resume(
     # optimized_resume = models.resume_format(openai_key, optimized_resume)
 
     return optimized_resume
+
+def test_func(api_key,x):
+    return f"test {x}", f"test2 {api_key}", '''# Hello world'''
+
+def update_markdown(x):
+    return '''
+        # Hello world
+        ## second title
+        '''

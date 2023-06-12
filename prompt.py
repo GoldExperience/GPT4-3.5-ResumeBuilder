@@ -17,21 +17,23 @@ def generate_optimize_prompt(job_description, part_of_resume_title,part_of_resum
     return optimize_prompt
 
 def generate_suggestion_prompt(job_description, part_of_resume_title,part_of_resume,other_requirements):
-    suggestion_prompt = '''
+    suggestion_prompt = f'''
     Job Description:
     {job_description}
 
-    {part_of_resume_title}:
+    the {part_of_resume_title} part of Resume:
     {part_of_resume}
 
-    please provide some modify suggestions about {part_of_resume} 
-    Suggestions:
+    please provide some modify suggestions about the {part_of_resume} 
+    for example: this work experience is not suitable for this job because A,B,C...
+    
+    Suggestions
 
     '''
     return suggestion_prompt
 
 def generate_format_prompt(unformat_resume):
-    format_prompt = '''
+    format_prompt = f'''
     {unformat_resume}
     
     please format the above resume content to a decent format in markdown.

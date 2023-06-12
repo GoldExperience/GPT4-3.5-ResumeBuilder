@@ -9,7 +9,7 @@ with gr.Blocks() as demo:
         with gr.Group():
             with gr.Row():
                 openai_api_key = gr.Textbox(lines=1,label="openai_api_key",placeholder="you can get it from https://platform.openai.com/")
-                model = gr.Radio(['gpt-4','gpt-3.5'],label='LLM models')
+                model = gr.Radio(['gpt-4','gpt-3.5-turbo'],label='LLM models')
             job_description = gr.Textbox(lines=3,label="Job Description",placeholder="Enter your Job description")
             basic_info_input = gr.Textbox(lines=3,label="Basic Info",placeholder="Enter Basic Info like Name, Address, Phone Number, Email here...")
             

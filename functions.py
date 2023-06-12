@@ -1,8 +1,11 @@
 from prompt import generate_optimize_prompt
 import models
 import logging
-logging.basicConfig(level=logging.DEBUG,filename="run.log",filemode='w',format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s')
 
+logging.basicConfig(level=logging.DEBUG,filename="run.log",filemode='w',format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s')
+logger = logging.getLogger('function_logger')
+file_hadler = logging.FileHandler('run.log')
+logger.addHandler(file_hadler)
 # 输入的数据
 
 
@@ -60,15 +63,13 @@ def test_func(api_key, x):
 
 def modify_work_experience(openai_api_key, model, job_description, work_experience_input, other_requirements):
     part_title = "Work Experience"
-    # logging.DEBUG(model)
-    model= 'gpt-4'
     suggestions = models.resume_part_suggestions(
         openai_api_key,job_description, "Work Experience", work_experience_input, other_requirements, model)
-    # logging.DEBUG(suggestions)
+    logging.DEBUG(suggestions)
     optimized_work_exp = models.resume_part_optimizer(
-        openai_api_key, job_description, "Work Experience", work_experience_input, other_requirements, model
+        openai_api_key, job_description, "Work Experience", work_experience_input, other_requirements,suggestions,model
     )
-    # logging.DEBUG(optimized_work_exp)
+    logging.DEBUG(optimized_work_exp)
     return suggestions,optimized_work_exp
 
 

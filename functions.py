@@ -1,7 +1,11 @@
 from prompt import generate_optimize_prompt
 import models
+import logging
+logging.basicConfig(level=logging.DEBUG,filename="run.log",filemode='w',format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s')
 
 # 输入的数据
+
+
 def optimized_resume(
     openai_key,
     job_description,
@@ -16,7 +20,7 @@ def optimized_resume(
 ):
     # 在这里实现简历优化逻辑
     optimized_resume = basic_info + "\n"
-    
+
     optimized_resume += "## Work Experience\n"
     if not_optimize_work_exp == False:
         # 优化 work_exp
@@ -49,8 +53,24 @@ def optimized_resume(
 
     return optimized_resume
 
-def test_func(api_key,x):
+
+def test_func(api_key, x):
     return f"test {x}", f"test2 {api_key}", '''# Hello world'''
+
+
+def modify_work_experience(openai_api_key, model, job_description, work_experience_input, other_requirements):
+    part_title = "Work Experience"
+    # logging.DEBUG(model)
+    model= 'gpt-4'
+    suggestions = models.resume_part_suggestions(
+        openai_api_key,job_description, "Work Experience", work_experience_input, other_requirements, model)
+    # logging.DEBUG(suggestions)
+    optimized_work_exp = models.resume_part_optimizer(
+        openai_api_key, job_description, "Work Experience", work_experience_input, other_requirements, model
+    )
+    # logging.DEBUG(optimized_work_exp)
+    return suggestions,optimized_work_exp
+
 
 def update_markdown(x):
     return '''

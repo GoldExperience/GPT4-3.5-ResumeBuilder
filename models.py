@@ -1,5 +1,5 @@
 import openai
-from prompt import generate_optimize_prompt, generate_format_prompt
+from prompt import generate_optimize_prompt, generate_format_prompt,generate_suggestion_prompt
 
 system_design_for_optimize = '''
 You are a highly skilled and capable AI tool designed to optimize and enhance resumes. 
@@ -26,10 +26,15 @@ def get_model_response(system_role_prompt,user_message,model,max_token = 500,tem
     )
     return response['choices'][0]['message']['content']
 
-
-def resume_part_optimizer(openai_key,job_description, part_of_resume_title,part_of_resume,other_requirements,model="gpt-4"):
+def resume_part_suggestions(openai_key,job_description, part_of_resume_title,part_of_resume,other_requirements,model):
     openai.api_key = openai_key
-    user_message = generate_optimize_prompt(job_description, part_of_resume_title,part_of_resume,other_requirements)
+    user_message = generate_suggestion_prompt(job_description,part_of_resume_title,part_of_resume,other_requirements)
+    response_content = get_model_response(system_design_for_optimize,user_message,model)
+    return response_content
+
+def resume_part_optimizer(openai_key,job_description, part_of_resume_title,part_of_resume,other_requirements,modify_suggestions,model):
+    openai.api_key = openai_key
+    user_message = generate_optimize_prompt(job_description, part_of_resume_title,part_of_resume,modify_suggestions,other_requirements)
     response_content = get_model_response(system_design_for_optimize,user_message,model)
     return response_content
 
@@ -38,6 +43,9 @@ def resume_format(openai_key,resume_content,model="gpt-4"):
     user_message = generate_format_prompt(resume_content)
     response_content = get_model_response(system_design_for_format,user_message,model)
     return response_content
+
+
+
 
 def test_func(x):
     return "result1","result2"

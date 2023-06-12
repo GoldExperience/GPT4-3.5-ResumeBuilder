@@ -1,4 +1,4 @@
-def generate_optimize_prompt(job_description, part_of_resume_title,part_of_resume,other_requirements):
+def generate_optimize_prompt(job_description, part_of_resume_title,part_of_resume,modify_suggestions,other_requirements):
     optimize_prompt=f'''
     Job Description:
     {job_description}
@@ -6,9 +6,29 @@ def generate_optimize_prompt(job_description, part_of_resume_title,part_of_resum
     {part_of_resume_title}:
     {part_of_resume}
 
-    please optimize the {part_of_resume_title} based on the Job Description,{other_requirements} with original Job title.
+    Modify Suggestions:
+    {modify_suggestions}
+
+    Other requirements:
+    {other_requirements}
+
+    please optimize the {part_of_resume_title} based on the Job Description,modify suggestions,other requirements with original Job title.
     '''
     return optimize_prompt
+
+def generate_suggestion_prompt(job_description, part_of_resume_title,part_of_resume,other_requirements):
+    suggestion_prompt = '''
+    Job Description:
+    {job_description}
+
+    {part_of_resume_title}:
+    {part_of_resume}
+
+    please provide some modify suggestions about {part_of_resume} 
+    Suggestions:
+
+    '''
+    return suggestion_prompt
 
 def generate_format_prompt(unformat_resume):
     format_prompt = '''
@@ -20,9 +40,5 @@ def generate_format_prompt(unformat_resume):
     '''
     return format_prompt
 
-# print(generate_prompt("hello","hello1","hello2","hello3"))
-# class system_optimizer:
-#     def __init__(self) -> None:
-#         self.role = "system"
-#         self.prompt = 
+
     

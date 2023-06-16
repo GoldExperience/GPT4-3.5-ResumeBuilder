@@ -50,10 +50,11 @@ def resume_all_optimizer(
         full_resume,
         other_requirements,
         model,
+        max_token
         ):
     openai.api_key = openai_key
-    user_message = generate_full_resume(job_description,full_resume,other_requirements))
-    response_content = get_model_response(system_design_for_optimize,user_message,model)
+    user_message = generate_full_resume(job_description,full_resume,other_requirements)
+    response_content = get_model_response(system_design_for_optimize,user_message,model,max_token)
     return response_content
 
 def test_func(x):

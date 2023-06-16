@@ -54,7 +54,8 @@ def generate_full_resume(job_description,full_resume,other_requirements):
     {other_requirements}
     ==================
     please optimize the resume based on the Job Description, and Requirements
-
+    In Markdown format
+    
     Optimized Resume:
     {{}}
     """

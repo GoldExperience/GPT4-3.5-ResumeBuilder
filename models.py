@@ -1,5 +1,5 @@
 import openai
-from prompt import generate_optimize_prompt, generate_format_prompt,generate_suggestion_prompt
+from prompt import *
 
 system_design_for_optimize = '''
 You are a highly skilled and capable AI tool designed to optimize and enhance resumes. 
@@ -44,8 +44,17 @@ def resume_format(openai_key,resume_content,model="gpt-4"):
     response_content = get_model_response(system_design_for_format,user_message,model)
     return response_content
 
-
-
+def resume_all_optimizer(
+        openai_key,
+        job_description,
+        full_resume,
+        other_requirements,
+        model,
+        ):
+    openai.api_key = openai_key
+    user_message = generate_full_resume(job_description,full_resume,other_requirements))
+    response_content = get_model_response(system_design_for_optimize,user_message,model)
+    return response_content
 
 def test_func(x):
     return "result1","result2"

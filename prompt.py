@@ -42,5 +42,25 @@ def generate_format_prompt(unformat_resume):
     '''
     return format_prompt
 
+def generate_full_resume(job_description,full_resume,other_requirements):
+    prompt = f"""
+    Job Description:
+    {job_description}
+
+    Resume:
+    {full_resume}
+
+    Requirements:
+    {other_requirements}
+    ==================
+    please optimize the resume based on the Job Description, and Requirements
+
+    Optimized Resume:
+    {{}}
+    """
+    return prompt
+
+if __name__=="__main__":
+    print(generate_full_resume("test job description","full resume","requirements"))
 
     

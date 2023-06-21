@@ -163,7 +163,8 @@ cython_debug/
 prepare.txt
 
 # Sketch
-# web-test.py
+# web-test.py  
+app-test.py                                                            
 
 # Other
 otherthings/

@@ -18,9 +18,12 @@ with gr.Blocks() as demo:
             test_button = gr.Button("refine full")
 
         with gr.Group():    
-            out_text = gr.Markdown("# Optimized Resume...")
+            with gr.Tab("Preview"):
+                out_text = gr.Markdown("# Optimized Resume...")
+            with gr.Tab("Markdown"):
+                out_text_markdown = gr.TextArea(label="optimized Resume")
 
-    test_button.click(resume_all_optimizer,inputs=[openai_key,job_description,resume,other_requirements,model,max_token],outputs=out_text)
+    test_button.click(resume_all_optimizer,inputs=[openai_key,job_description,resume,other_requirements,model,max_token],outputs=[out_text,out_text_markdown])
 
 demo.launch()
 

@@ -9,9 +9,9 @@ openai.api_key = openai_key
 with gr.Blocks() as demo:
     with gr.Row():
         with gr.Group():
-            openai_key = gr.Text(value=openai_key)
-            model = gr.Radio(["gpt-4","gpt-3.5-turbo-16k"])
-            max_token = gr.Slider(minimum=0,maximum=16000,value=500)
+            openai_key = gr.Text(value=openai_key,label="openai key")
+            model = gr.Radio(["gpt-4","gpt-3.5-turbo-16k"],label="model")
+            max_token = gr.Slider(minimum=0,maximum=16000,value=500,label="max_token")
             job_description = gr.Text(lines=3,label="job description")
             resume = gr.TextArea(label="resume",lines=10)
             other_requirements = gr.Text(lines=2,label="other requirements")

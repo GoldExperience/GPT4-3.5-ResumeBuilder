@@ -25,6 +25,7 @@ with gr.Blocks() as demo:
 
     test_button.click(resume_all_optimizer,inputs=[openai_key,job_description,resume,other_requirements,model,max_token],outputs=[out_text,out_text_markdown])
 
-demo.launch()
+demo.launch(enable_queue=True, share=False,
+           server_name="0.0.0.0", server_port=7860)
 
 

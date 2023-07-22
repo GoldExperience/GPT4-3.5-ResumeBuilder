@@ -78,3 +78,6 @@ def update_markdown(x):
         # Hello world
         ## second title
         '''
+        
+def temp_method_for_test_jenkins():
+    print("test successful")

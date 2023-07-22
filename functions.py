@@ -80,4 +80,5 @@ def update_markdown(x):
         '''
         
 def temp_method_for_test_jenkins():
-    print("test successful")
+    print("test")
+    return "test success"
